@@ -1,0 +1,925 @@
+Да, в предыдущем сообщении я не вставил сам код. Ниже полный файл целиком:
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Константин — партнёр JIMON GROUP. Развиваю бизнес, строю команду и помогаю людям разобраться в возможностях партнёрской программы.">
+<title>Константин | JIMON GROUP</title>
+<style>
+:root {
+    --bg: #f5f7f2;
+    --white: #ffffff;
+    --text: #172018;
+    --muted: #687169;
+    --green: #173d2b;
+    --green-light: #24583e;
+    --lime: #c9e7a4;
+    --light: #e8f4d7;
+    --border: #dfe6dc;
+    --shadow: 0 20px 60px rgba(20, 48, 32, 0.10);
+    --radius: 26px;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.container {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+}
+/* Навигация */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: rgba(245, 247, 242, 0.90);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(223, 230, 220, 0.7);
+}
+.nav-inner {
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    font-size: 17px;
+}
+.logo span {
+    color: var(--green-light);
+}
+.nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+    color: #4d584f;
+}
+.nav-links a:hover {
+    color: var(--green);
+}
+.nav-cta {
+    padding: 11px 17px;
+    border-radius: 999px;
+    background: var(--green);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+.nav-cta:hover {
+    transform: translateY(-2px);
+    background: #102f21;
+}
+/* Первый экран */
+.hero {
+    padding: 150px 0 90px;
+    min-height: 760px;
+    display: flex;
+    align-items: center;
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(201, 231, 164, 0.55),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(210, 228, 211, 0.65),
+            transparent 30%
+        );
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: 70px;
+    align-items: center;
+}
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--light);
+    color: var(--green);
+    padding: 8px 13px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.dot {
+    width: 7px;
+    height: 7px;
+    background: #6ca74b;
+    border-radius: 50%;
+}
+h1 {
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    margin-bottom: 26px;
+}
+h1 em {
+    font-style: normal;
+    color: var(--green-light);
+}
+.hero-copy {
+    font-size: 19px;
+    color: var(--muted);
+    max-width: 650px;
+    margin-bottom: 34px;
+}
+.buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 15px 22px;
+    border-radius: 14px;
+    font-weight: 750;
+    transition: 0.2s;
+}
+.btn-primary {
+    background: var(--green);
+    color: white;
+}
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: #102f21;
+}
+.btn-secondary {
+    border: 1px solid var(--border);
+    background: white;
+}
+.btn-secondary:hover {
+    border-color: #b9c8b9;
+    transform: translateY(-2px);
+}
+/* Карточка */
+.hero-card {
+    background: var(--green);
+    color: white;
+    border-radius: 34px;
+    padding: 38px;
+    min-height: 470px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+.hero-card::before {
+    content: "";
+    position: absolute;
+    width: 310px;
+    height: 310px;
+    border-radius: 50%;
+    background: rgba(201, 231, 164, 0.17);
+    right: -100px;
+    top: -90px;
+}
+.hero-card::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    left: -60px;
+    bottom: -60px;
+}
+.card-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-label {
+    font-size: 12px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+.monogram {
+    width: 58px;
+    height: 58px;
+    border-radius: 18px;
+    background: var(--lime);
+    color: var(--green);
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    font-weight: 850;
+}
+.hero-card h2 {
+    position: relative;
+    z-index: 1;
+    font-size: 38px;
+    line-height: 1.08;
+    margin: 65px 0 16px;
+    letter-spacing: -0.03em;
+}
+.hero-card p {
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 16px;
+}
+.card-bottom {
+    position: absolute;
+    z-index: 1;
+    bottom: 32px;
+    left: 38px;
+    right: 38px;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+    padding-top: 19px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.62);
+}
+/* Общие секции */
+section {
+    padding: 100px 0;
+}
+.section-head {
+    max-width: 720px;
+    margin-bottom: 48px;
+}
+.kicker {
+    color: var(--green-light);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+h2.section-title {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.045em;
+    margin-bottom: 17px;
+}
+.section-sub {
+    color: var(--muted);
+    font-size: 17px;
+}
+/* Обо мне */
+.about {
+    background: white;
+}
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 70px;
+    align-items: start;
+}
+.quote {
+    border-left: 4px solid #9bc77a;
+    padding: 4px 0 4px 24px;
+    font-size: 25px;
+    line-height: 1.35;
+    font-weight: 650;
+}
+.about-text p {
+    color: var(--muted);
+    margin-bottom: 18px;
+    font-size: 17px;
+}
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 32px;
+}
+.stat {
+    padding: 22px;
+    background: var(--bg);
+    border-radius: 18px;
+}
+.stat strong {
+    display: block;
+    font-size: 29px;
+    letter-spacing: -0.04em;
+    color: var(--green);
+}
+.stat span {
+    font-size: 13px;
+    color: var(--muted);
+}
+/* Преимущества */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.feature {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 28px;
+    min-height: 230px;
+    transition: 0.25s;
+}
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+.icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: var(--light);
+    display: grid;
+    place-items: center;
+    color: var(--green);
+    font-weight: 900;
+    margin-bottom: 22px;
+}
+.feature h3 {
+    font-size: 20px;
+    margin-bottom: 9px;
+}
+.feature p {
+    color: var(--muted);
+    font-size: 15px;
+}
+/* Как начать */
+.steps {
+    background: var(--green);
+    color: white;
+}
+.steps .kicker {
+    color: var(--lime);
+}
+.steps .section-sub {
+    color: rgba(255, 255, 255, 0.68);
+}
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+.step {
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    padding-top: 22px;
+}
+.step-num {
+    font-size: 13px;
+    color: var(--lime);
+    font-weight: 800;
+    margin-bottom: 55px;
+}
+.step h3 {
+    font-size: 23px;
+    margin-bottom: 9px;
+}
+.step p {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 15px;
+}
+/* Финальный CTA */
+.cta-wrap {
+    padding: 100px 0;
+}
+.cta {
+    background: linear-gradient(
+        135deg,
+        #e8f4d7,
+        #d6ebc3
+    );
+    border-radius: 34px;
+    padding: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+.cta h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    max-width: 680px;
+}
+.cta p {
+    color: #566257;
+    margin-top: 15px;
+    max-width: 620px;
+}
+.contact {
+    min-width: 230px;
+    background: var(--green);
+    color: white;
+    padding: 22px 24px;
+    border-radius: 20px;
+    text-align: center;
+    transition: 0.2s;
+}
+.contact:hover {
+    transform: translateY(-3px);
+    background: #102f21;
+}
+.contact small {
+    display: block;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+}
+.contact strong {
+    font-size: 21px;
+}
+/* Footer */
+footer {
+    padding: 35px 0 45px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+}
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.disclaimer {
+    max-width: 850px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #879087;
+}
+/* Планшет */
+@media (max-width: 850px) {
+    .nav-links {
+        display: none;
+    }
+    .hero {
+        padding-top: 120px;
+        min-height: auto;
+    }
+    .hero-grid,
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+    .hero-card {
+        min-height: 390px;
+    }
+    .features-grid,
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    .feature {
+        min-height: auto;
+    }
+    .step-num {
+        margin-bottom: 30px;
+    }
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    .cta {
+        padding: 38px 28px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .contact {
+        min-width: 0;
+    }
+}
+/* Телефон */
+@media (max-width: 520px) {
+    .container {
+        width: min(100% - 28px, 1120px);
+    }
+    .nav-inner {
+        height: 64px;
+    }
+    .nav-cta {
+        padding: 9px 13px;
+        font-size: 13px;
+    }
+    .hero {
+        padding-bottom: 60px;
+    }
+    h1 {
+        font-size: 47px;
+    }
+    .hero-copy {
+        font-size: 17px;
+    }
+    section,
+    .cta-wrap {
+        padding: 70px 0;
+    }
+    .hero-card {
+        padding: 28px;
+        min-height: 360px;
+        border-radius: 26px;
+    }
+    .hero-card h2 {
+        font-size: 31px;
+        margin-top: 52px;
+    }
+    .card-bottom {
+        left: 28px;
+        right: 28px;
+        bottom: 26px;
+    }
+    .cta {
+        border-radius: 26px;
+    }
+    .footer-inner {
+        flex-direction: column;
+    }
+}
+</style>
+</head>
+<body>
+<header class="nav">
+    <div class="container nav-inner">
+        <a class="logo" href="#top">
+            KONSTANTIN <span>· JIMON</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#about">Обо мне</a>
+            <a href="#jimon">Почему JIMON</a>
+            <a href="#start">Как начать</a>
+        </nav>
+        <a
+            class="nav-cta"
+            href="https://t.me/konstantin_vegan"
+            target="_blank"
+            rel="noopener"
+        >
+            Связаться
+        </a>
+    </div>
+</header>
+<main id="top">
+    <!-- Первый экран -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow">
+                    <span class="dot"></span>
+                    Партнёр JIMON GROUP
+                </div>
+                <h1>
+                    Бизнес, который можно
+                    <em>строить по-своему.</em>
+                </h1>
+                <p class="hero-copy">
+                    Меня зовут Константин.
+                    Я развиваю бизнес вместе с JIMON GROUP
+                    и ищу людей, которым интересны современные
+                    возможности для дополнительного дохода
+                    и развития команды.
+                </p>
+                <div class="buttons">
+                    <a
+                        class="btn btn-primary"
+                        href="https://t.me/konstantin_vegan"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        Написать в Telegram →
+                    </a>
+                    <a
+                        class="btn btn-secondary"
+                        href="#about"
+                    >
+                        Узнать обо мне
+                    </a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="card-top">
+                    <div class="card-label">
+                        Личная страница
+                    </div>
+                    <div class="monogram">
+                        К
+                    </div>
+                </div>
+                <h2>
+                    Константин<br>
+                    × JIMON GROUP
+                </h2>
+                <p>
+                    Развиваю команду, знакомлю с возможностью
+                    и помогаю сделать первые шаги.
+                </p>
+                <div class="card-bottom">
+                    Онлайн · Партнёрство · Команда
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Обо мне -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">
+                    Обо мне
+                </div>
+                <h2 class="section-title">
+                    Не просто продавать.
+                    Создавать систему.
+                </h2>
+            </div>
+            <div class="about-grid">
+                <div class="quote">
+                    «Я всегда искал возможность,
+                    которая сочетает пользу для людей
+                    и реальный доход».
+                </div>
+                <div class="about-text">
+                    <p>
+                        Меня зовут Константин.
+                        Я развиваю бизнес вместе с JIMON GROUP.
+                    </p>
+                    <p>
+                        Я всегда искал возможность,
+                        которая сочетает в себе пользу для людей
+                        и реальный доход.
+                    </p>
+                    <p>
+                        JIMON GROUP заинтересовала меня
+                        сочетанием многолетней истории,
+                        собственного производства
+                        и современного подхода
+                        к развитию партнёрского бизнеса.
+                    </p>
+                    <p>
+                        Моя цель — не просто продавать продукцию,
+                        а строить команду и помогать людям
+                        осваивать новый формат работы,
+                        не отказываясь от своей обычной жизни.
+                    </p>
+                    <p>
+                        Я открыт к знакомству с теми,
+                        кто хочет разобраться в модели самостоятельно,
+                        задать вопросы и понять,
+                        подходит ли ему такой формат.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <strong>30+</strong>
+                            <span>
+                                лет истории JIMON GROUP
+                            </span>
+                        </div>
+                        <div class="stat">
+                            <strong>24/7</strong>
+                            <span>
+                                возможность работать онлайн
+                            </span>
+                        </div>
+                        <div class="stat">
+                            <strong>1 → 1</strong>
+                            <span>
+                                личное знакомство и сопровождение
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Почему JIMON -->
+    <section id="jimon">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">
+                    Почему JIMON GROUP
+                </div>
+                <h2 class="section-title">
+                    Традиции плюс современный подход
+                </h2>
+                <p class="section-sub">
+                    JIMON GROUP сочетает многолетнюю историю,
+                    собственное производство и современный
+                    подход к развитию бизнеса.
+                </p>
+            </div>
+            <div class="features-grid">
+                <article class="feature">
+                    <div class="icon">
+                        30+
+                    </div>
+                    <h3>
+                        История
+                    </h3>
+                    <p>
+                        Компания развивает производство
+                        и научную базу более трёх десятилетий.
+                    </p>
+                </article>
+                <article class="feature">
+                    <div class="icon">
+                        01
+                    </div>
+                    <h3>
+                        Собственное сырьё
+                    </h3>
+                    <p>
+                        Компания заявляет о собственных
+                        плантациях лекарственных растений
+                        и контроле цепочки производства.
+                    </p>
+                </article>
+                <article class="feature">
+                    <div class="icon">
+                        ✓
+                    </div>
+                    <h3>
+                        Сертификация
+                    </h3>
+                    <p>
+                        На официальном сайте представлены
+                        сведения о международных сертификатах
+                        и стандартах производства.
+                    </p>
+                </article>
+                <article class="feature">
+                    <div class="icon">
+                        ↗
+                    </div>
+                    <h3>
+                        Онлайн-формат
+                    </h3>
+                    <p>
+                        Знакомство с продуктами,
+                        коммуникация и развитие партнёрской
+                        структуры могут проходить онлайн.
+                    </p>
+                </article>
+                <article class="feature">
+                    <div class="icon">
+                        ∞
+                    </div>
+                    <h3>
+                        Команда
+                    </h3>
+                    <p>
+                        Для меня ключевая ценность —
+                        не разовая продажа,
+                        а развитие команды
+                        и долгосрочное взаимодействие.
+                    </p>
+                </article>
+                <article class="feature">
+                    <div class="icon">
+                        К
+                    </div>
+                    <h3>
+                        Личное сопровождение
+                    </h3>
+                    <p>
+                        Можно напрямую обсудить формат,
+                        задать вопросы и разобраться
+                        с первыми шагами без лишней информации.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+    <!-- Как начать -->
+    <section class="steps" id="start">
+        <div class="container">
+            <div class="section-head">
+                <div class="kicker">
+                    Как начать
+                </div>
+                <h2 class="section-title">
+                    Три простых шага
+                </h2>
+                <p class="section-sub">
+                    Сначала знакомимся и разбираемся,
+                    подходит ли вам этот формат.
+                </p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-num">
+                        01
+                    </div>
+                    <h3>
+                        Знакомимся
+                    </h3>
+                    <p>
+                        Напишите мне в Telegram.
+                        Расскажите, что именно вас заинтересовало.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-num">
+                        02
+                    </div>
+                    <h3>
+                        Разбираемся
+                    </h3>
+                    <p>
+                        Я расскажу о компании,
+                        продукции и партнёрской модели
+                        и отвечу на ваши вопросы.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-num">
+                        03
+                    </div>
+                    <h3>
+                        Принимаем решение
+                    </h3>
+                    <p>
+                        Если формат вам подходит,
+                        обсудим дальнейшие шаги
+                        и возможности развития команды.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Финальный блок -->
+    <section class="cta-wrap">
+        <div class="container">
+            <div class="cta">
+                <div>
+                    <div class="kicker">
+                        Давайте знакомиться
+                    </div>
+                    <h2>
+                        Хотите узнать,
+                        как это работает?
+                    </h2>
+                    <p>
+                        Напишите мне в Telegram.
+                        Расскажу о своём опыте,
+                        покажу модель и отвечу
+                        на вопросы без давления
+                        и обязательств.
+                    </p>
+                </div>
+                <a
+                    class="contact"
+                    href="https://t.me/konstantin_vegan"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <small>
+                        Telegram
+                    </small>
+                    <strong>
+                        @konstantin_vegan
+                    </strong>
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="container footer-inner">
+        <div>
+            © 2026 Константин · Партнёр JIMON GROUP
+        </div>
+        <div>
+            <a
+                href="https://t.me/konstantin_vegan"
+                target="_blank"
+                rel="noopener"
+            >
+                @konstantin_vegan
+            </a>
+        </div>
+    </div>
+    <div class="container disclaimer">
+        Информация на странице носит ознакомительный характер.
+        Упоминание продукции и партнёрской возможности
+        не является медицинской рекомендацией,
+        гарантией дохода или публичной офертой.
+        Перед принятием решения рекомендуется самостоятельно
+        ознакомиться с официальной информацией компании.
+    </div>
+</footer>
+</body>
+</html>
